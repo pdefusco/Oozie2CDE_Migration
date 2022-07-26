@@ -1,1 +1,1 @@
-#Oozie 2 CDE Migration Guide
+#Oozie 2 CDE Migration Scripts
