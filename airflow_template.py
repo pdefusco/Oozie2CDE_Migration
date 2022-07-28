@@ -27,15 +27,15 @@ dag = DAG(
 ## Spark Job - Declare one operator for each Spark Job
 
 step1 = CDEJobRunOperator(
-    task_id='spark_cde_job_name',
+    task_id='enter_task_id',
     dag=dag,
-    job_name='airflow_job_name'
+    job_name='spark_cde_job_name'
 )
 
 step2 = CDEJobRunOperator(
-    task_id='spark_cde_job_name',
+    task_id='enter_task_id',
     dag=dag,
-    job_name='airflow_job_name-claims-job'
+    job_name='spark_cde_job_name-claims-job'
 )
 
 ## Optional: CDW Query
