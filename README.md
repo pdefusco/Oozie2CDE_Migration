@@ -1,4 +1,4 @@
-# Migrating from Oozie to CDE with the oozie2cde API
+# Migrating Oozie to CDE with the oozie2cde API
 
 ![alt text](img/oozie2cde_slide.png)
 
