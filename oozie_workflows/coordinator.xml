@@ -1,0 +1,16 @@
+<coordinator-app xmlns = "uri:oozie:coordinator:0.2" name ="coord_copydata_from_external_orc" frequency = "5 * * * *" 
+                 start ="2016-00-18T01:00Z" end = "2025-12-31T00:00Z"" timezone = "America/Los_Angeles">
+                                                                                  
+   <controls>
+      <timeout>1</timeout>
+      <concurrency>1</concurrency>
+      <execution>FIFO</execution>
+      <throttle>1</throttle>
+   </controls>
+   
+   <action>
+      <workflow>
+         <app-path>pathof_workflow_xml/workflow.xml</app-path>
+      </workflow>
+   </action>
+</coordinator-app>

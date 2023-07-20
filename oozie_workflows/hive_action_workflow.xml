@@ -1,0 +1,10 @@
+<workflow-app name="sample-wf" xmlns="uri:oozie:workflow:0.1">
+   <action name = "Create_External_Table">
+      <hive xmlns = "uri:oozie:hive-action:0.4">
+         <job-tracker>xyz.com:8088</job-tracker>
+         <name-node>hdfs://rootname</name-node>
+         <script>oozie_workflows/external.hive</script>
+      </hive>
+      <error to = "kill_job" />
+   </action>
+</workflow-app>

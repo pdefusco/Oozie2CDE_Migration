@@ -1,0 +1,25 @@
+<workflow-app xmlns='uri:oozie:workflow:0.5' name='SparkWordCount'>
+      <start to='spark-node' />
+        <action name='spark-node'>
+          <spark xmlns="uri:oozie:spark-action:0.1">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <prepare>
+              <delete path="${nameNode}/user/${wf:user()}/${examplesRoot}/output-data"/>
+            </prepare>
+            <master>${master}</master>
+            <name>SparkPi</name>
+            <class>org.apache.spark.examples.SparkPi</class>
+            <jar>example_spark_jobs/jobs/pi.scala</jar>
+            <spark-opts>--executor-memory 2G --num-executors 5</spark-opts>
+            <arg>value=10</arg>
+          </spark>
+          <ok to="end" />
+          <error to="fail" />
+        </action>
+        <kill name="fail">
+          <message>Workflow failed, error
+            message[${wf:errorMessage(wf:lastErrorNode())}] </message>
+        </kill>
+        <end name='end' />
+    </workflow-app>

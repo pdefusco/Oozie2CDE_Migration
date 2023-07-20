@@ -1,0 +1,12 @@
+<workflow-app name = "sample-wf" xmlns = "uri:oozie:workflow:0.1">
+   <action name = "an-email">
+      <email xmlns = "uri:oozie:email-action:0.1">
+         <to>julie@xyz.com,max@abc.com</to>
+         <cc>jax@xyz.com</cc>
+         <subject>Email notifications for ${wf:id()}</subject>
+         <body>The wf ${wf:id()} successfully completed.</body>
+      </email>
+      <ok to = "main_job"/>
+      <error to = "kill_job"/>
+   </action>
+</workflow-app>

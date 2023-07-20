@@ -1,0 +1,13 @@
+<workflow-app name="sample-wf" xmlns="uri:oozie:workflow:0.5">
+    <action name="hdfscommands">
+         <fs>
+            <delete path='hdfs://foo:8020/usr/tucu/temp-data'/>
+            <mkdir path='archives/${wf:id()}'/>
+            <move source='${jobInput}' target='archives/${wf:id()}/processed-input'/>
+            <chmod path='${jobOutput}' permissions='-rwxrw-rw-' dir-files='true'><recursive/></chmod>
+            <chgrp path='${jobOutput}' group='testgroup' dir-files='true'><recursive/></chgrp>
+        </fs>
+        <ok to="myotherjob"/>
+        <error to="errorcleanup"/>
+    </action>
+</workflow-app>

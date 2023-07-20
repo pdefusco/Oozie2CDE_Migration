@@ -1,0 +1,20 @@
+<workflow-app xmlns = "uri:oozie:workflow:0.4" name = "simple-Workflow">
+   <start to = "Insert_into_Table" />
+   
+   <action name = "Insert_into_Table">
+      <hive xmlns = "uri:oozie:hive-action:0.4">
+         <job-tracker>${jobTracker}</job-tracker>
+         <name-node>${nameNode}</name-node>
+         <script>${script_name_copy}</script>
+         <param>${database}</param>
+      </hive>
+      <ok to = "end" />
+      <error to = "kill_job" />
+   </action>
+   
+   <kill name = "kill_job">
+      <message>Job failed</message>
+   </kill>
+   <end name = "end" />
+
+</workflow-app>

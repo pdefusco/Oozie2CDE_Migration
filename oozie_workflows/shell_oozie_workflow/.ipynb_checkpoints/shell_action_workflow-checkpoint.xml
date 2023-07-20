@@ -1,0 +1,17 @@
+<workflow-app xmlns = 'uri:oozie:workflow:0.3' name = 'shell-wf'>
+   <start to = 'shell1' />
+   <action name = 'shell1'>
+      <shell xmlns = "uri:oozie:shell-action:0.1">
+         <job-tracker>${jobTracker}</job-tracker>
+         <name-node>${nameNode}</name-node>
+         <file>path_of_file_name</file>
+      </shell>
+      <ok to = "end" />
+      <error to = "fail" />
+   </action>
+   <kill name = "fail">
+      <message>Script failed, error message[${wf:errorMessage(wf:lastErrorNode())}]
+         </message>
+   </kill>
+   <end name = 'end' />
+</workflow-app>
